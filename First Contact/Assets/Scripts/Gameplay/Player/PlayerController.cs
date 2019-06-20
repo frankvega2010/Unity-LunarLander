@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject particlesGameObject;
-    public float gas;
+    public float fuel;
 
     private PlayerMovement playerMovement;
     private ParticleSystem playerParticles;
@@ -21,11 +21,11 @@ public class PlayerController : MonoBehaviour
     {
         if(playerMovement.isMoving)
         {
-            gas = gas - 0.1f;
-            if(gas <= 0)
+            fuel = fuel - 0.1f;
+            if(fuel <= 0)
             {
                 playerMovement.isMoving = false;
-                gas = 0;
+                fuel = 0;
             }
             playerParticles.Play();
         }
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             playerParticles.Stop();
         }
 
-        if(gas <= 0)
+        if(fuel <= 0)
         {
             playerMovement.canUseBoost = false;
         }
