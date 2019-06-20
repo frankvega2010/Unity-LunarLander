@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject particlesGameObject;
     public float fuel;
+    public int score;
 
     private PlayerMovement playerMovement;
     private ParticleSystem playerParticles;
