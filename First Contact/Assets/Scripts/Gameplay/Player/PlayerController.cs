@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public delegate void onPlayerAction(string action);
+    public static onPlayerAction onSuccesfullLanding;
+    public static onPlayerAction onFailedLanding;
+
     public GameObject particlesGameObject;
+    public GameObject timerUI;
     public float crashSpeed;
     public float fakeMultiplierSpeed;
     public float fuel;
@@ -13,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask rayCastLayer;
     public float rayDistance;
 
+    private UIDisplayTime UITimer;
     private PlayerMovement playerMovement;
     private ParticleSystem playerParticles;
     private Rigidbody2D playerRigidbody;
@@ -20,6 +26,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = CurrentSessionStats.Get().score;
+        UITimer = timerUI.GetComponent<UIDisplayTime>();
         playerMovement = GetComponent<PlayerMovement>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerParticles = particlesGameObject.GetComponent<ParticleSystem>();
@@ -29,7 +37,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up * -1, rayDistance,rayCastLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up * -1, rayDistance, rayCastLayer);
 
         if (hit.collider != null)
         {
@@ -54,7 +62,7 @@ public class PlayerController : MonoBehaviour
         if (playerMovement.isMoving)
         {
             fuel = fuel - 0.1f;
-            if(fuel <= 0)
+            if (fuel <= 0)
             {
                 playerMovement.isMoving = false;
                 fuel = 0;
@@ -66,7 +74,7 @@ public class PlayerController : MonoBehaviour
             playerParticles.Stop();
         }
 
-        if(fuel <= 0)
+        if (fuel <= 0)
         {
             playerMovement.canUseBoost = false;
         }
@@ -78,21 +86,47 @@ public class PlayerController : MonoBehaviour
 
         if (localRotZ > 20 && localRotZ < 335 || localRotZ > 25 && localRotZ < 340)
         {
-                Debug.Log("Failed Landing");
+            if (onFailedLanding != null)
+            {
+                GiveScore(false);
+                onFailedLanding("loss");
+            }
         }
         else
         {
             if (playerRigidbody.velocity.y * fakeMultiplierSpeed < -crashSpeed || !isPlayerOnGround)
             {
-                Debug.Log("Failed Landing");
+                if (onFailedLanding != null)
+                {
+                    GiveScore(false);
+                    onFailedLanding("loss");
+                }
             }
             else
             {
-                Debug.Log("Succesfull Landing");
                 isPlayerOnGround = false;
+                if (onSuccesfullLanding != null)
+                {
+                    GiveScore(true);
+                    onSuccesfullLanding("win");
+                }
             }
         }
-        
+
+    }
+
+    private void GiveScore(bool isPlayerAlive)
+    {
+        if (isPlayerAlive)
+        {
+            score = score + 1000 + ((Mathf.FloorToInt(fuel)/5) * 5) - (Mathf.FloorToInt(UITimer.timer)*5);
+        }
+        else
+        {
+            score = score + 0;
+        }
+
+        CurrentSessionStats.Get().score = score;
     }
 
     private void OnDestroy()

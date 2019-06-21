@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class UIDisplayTime : MonoBehaviour
 {
     public Text timeText;
+    public float timer;
 
-    private float timer;
     private string time;
     private int minutes;
     private int seconds;
