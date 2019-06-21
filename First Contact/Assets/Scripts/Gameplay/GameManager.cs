@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
                 isPlayerDead = true;
                 isRoundFinished = true;
                 CurrentSessionStats.Get().level = 1;
-                CurrentSessionStats.Get().score = 0;
                 break;
             default:
                 break;
@@ -66,7 +65,7 @@ public class GameManager : MonoBehaviour
     {
         if(isPlayerDead)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // GO BACK TO MENU
+            SceneManager.LoadScene("GameOver");
         }
         else
         {
