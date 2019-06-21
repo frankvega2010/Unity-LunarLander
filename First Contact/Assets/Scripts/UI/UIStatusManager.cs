@@ -10,6 +10,8 @@ public class UIStatusManager : MonoBehaviour
     public GameObject UIAltitude;
     public GameObject UIHorizontalSpeed;
     public GameObject UIVerticalSpeed;
+    public float fakeMultiplierSpeed;
+    public float fakeMultiplierAltitude;
 
     private PlayerController playerStatus;
     private UIStatus fuel;
@@ -43,12 +45,12 @@ public class UIStatusManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hSpeed = playerRigidbody.velocity.x;
-        vSpeed = playerRigidbody.velocity.y;
+        hSpeed = playerRigidbody.velocity.x * fakeMultiplierSpeed;
+        vSpeed = playerRigidbody.velocity.y * fakeMultiplierSpeed;
         fuel.statusValue = playerStatus.fuel;
         score.statusValue = playerStatus.score;
-        altitude.statusValue = player.transform.position.y*20;
-        horizontalSpeed.statusValue = Mathf.Abs(hSpeed * 40);
-        verticalSpeed.statusValue = Mathf.Abs(vSpeed * 40);
+        altitude.statusValue = player.transform.position.y* fakeMultiplierAltitude;
+        horizontalSpeed.statusValue = Mathf.Abs(hSpeed);
+        verticalSpeed.statusValue = Mathf.Abs(vSpeed);
     }
 }

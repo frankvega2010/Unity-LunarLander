@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 1076172616}
   m_Layer: 0
   m_Name: Level Bounds
-  m_TagString: Untagged
+  m_TagString: levelBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1365,7 +1365,7 @@ GameObject:
   - component: {fileID: 1608126927}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1398,8 +1398,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlesGameObject: {fileID: 2028346068}
+  crashSpeed: 20
+  fakeMultiplierSpeed: 40
   fuel: 100
   score: 0
+  rayCastLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  rayDistance: 0.35
 --- !u!114 &1608126923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,6 +2083,8 @@ MonoBehaviour:
   UIAltitude: {fileID: 1163775931}
   UIHorizontalSpeed: {fileID: 1882235762}
   UIVerticalSpeed: {fileID: 1936280820}
+  fakeMultiplierSpeed: 40
+  fakeMultiplierAltitude: 20
 --- !u!1 &1869455029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,9 +2097,10 @@ GameObject:
   - component: {fileID: 1869455032}
   - component: {fileID: 1869455031}
   - component: {fileID: 1869455033}
-  m_Layer: 0
+  - component: {fileID: 1869455034}
+  m_Layer: 8
   m_Name: Level Generator
-  m_TagString: Untagged
+  m_TagString: landingZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2335,6 +2344,18 @@ MonoBehaviour:
   maxRangeX: 3
   minRangeY: 0
   maxRangeY: 10
+--- !u!114 &1869455034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869455029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8253b38ac3bd54d8f395824f1c8abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1876380802
 GameObject:
   m_ObjectHideFlags: 0
