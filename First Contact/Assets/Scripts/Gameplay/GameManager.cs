@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
                 resultText.updateText("SUCCESSFULL LANDING!",Color.green);
                 isPlayerDead = false;
                 isRoundFinished = true;
+                CurrentSessionStats.Get().level++;
                 break;
             case "loss":
                 Debug.Log("Failed Landing");
@@ -53,6 +54,8 @@ public class GameManager : MonoBehaviour
                 resultText.updateText("FAILED LANDING", Color.red);
                 isPlayerDead = true;
                 isRoundFinished = true;
+                CurrentSessionStats.Get().level = 1;
+                CurrentSessionStats.Get().score = 0;
                 break;
             default:
                 break;

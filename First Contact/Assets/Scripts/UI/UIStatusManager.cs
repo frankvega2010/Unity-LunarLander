@@ -10,6 +10,7 @@ public class UIStatusManager : MonoBehaviour
     public GameObject UIAltitude;
     public GameObject UIHorizontalSpeed;
     public GameObject UIVerticalSpeed;
+    public GameObject UICurrentLevel;
     public float fakeMultiplierSpeed;
     public float fakeMultiplierAltitude;
 
@@ -19,6 +20,7 @@ public class UIStatusManager : MonoBehaviour
     private UIStatus altitude;
     private UIStatus horizontalSpeed;
     private UIStatus verticalSpeed;
+    private UIStatus currentLevel;
 
     private Rigidbody2D playerRigidbody;
     private float hSpeed;
@@ -31,6 +33,7 @@ public class UIStatusManager : MonoBehaviour
         altitude = UIAltitude.GetComponent<UIStatus>();
         horizontalSpeed = UIHorizontalSpeed.GetComponent<UIStatus>();
         verticalSpeed = UIVerticalSpeed.GetComponent<UIStatus>();
+        currentLevel = UICurrentLevel.GetComponent<UIStatus>();
         playerStatus = player.GetComponent<PlayerController>();
 
         fuel.statusName = "FUEL";
@@ -38,8 +41,10 @@ public class UIStatusManager : MonoBehaviour
         altitude.statusName = "ALTITUDE";
         horizontalSpeed.statusName = "HORIZONTAL SPEED";
         verticalSpeed.statusName = "VERTICAL SPEED";
+        currentLevel.statusName = "LEVEL";
 
         playerRigidbody = player.GetComponent<Rigidbody2D>();
+        currentLevel.statusValue = CurrentSessionStats.Get().level;
     }
 
     // Update is called once per frame
