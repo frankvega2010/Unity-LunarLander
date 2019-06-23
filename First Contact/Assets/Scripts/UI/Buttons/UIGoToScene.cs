@@ -12,7 +12,10 @@ public class UIGoToScene : MonoBehaviour
     {
         switch (sceneName)
         {
-            // WIP
+            case "Level":
+                LoaderManager.Get().LoadScene(sceneName);
+                UILoadingScreen.Get().SetVisible(true);
+                break;
             default:
                 SceneManager.LoadScene(sceneName);
                 break;

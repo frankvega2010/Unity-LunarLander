@@ -69,7 +69,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+            LoaderManager.Get().LoadScene(SceneManager.GetActiveScene().name);
+            UILoadingScreen.Get().SetVisible(true);
         }
     }
 
