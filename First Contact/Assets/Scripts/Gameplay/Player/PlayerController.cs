@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerParticles = particlesGameObject.GetComponent<ParticleSystem>();
         LevelCollision.onPlayerTouch += checkCollision;
+        UIDisplayCheatScreen.OnCheatFuel += CheatAddFuel;
     }
 
     // Update is called once per frame
@@ -131,8 +132,14 @@ public class PlayerController : MonoBehaviour
         Highscore.Get().updateHighscore(score);
     }
 
+    private void CheatAddFuel()
+    {
+        fuel = fuel + 100;
+    }
+
     private void OnDestroy()
     {
         LevelCollision.onPlayerTouch -= checkCollision;
+        UIDisplayCheatScreen.OnCheatFuel -= CheatAddFuel;
     }
 }

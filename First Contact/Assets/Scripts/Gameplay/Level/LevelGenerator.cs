@@ -21,10 +21,12 @@ public class LevelGenerator : MonoBehaviour
     private EdgeCollider2D levelBoundsCollider;
     private int randomChance;
     private float randomPositionX;
+    private bool switchWinds;
     
     // Start is called before the first frame update
     void Start()
     {
+        switchWinds = true;
         lineRenderer = GetComponent<LineRenderer>();
         edgeCollider = GetComponent<EdgeCollider2D>();
         levelBoundsCollider = levelBounds.GetComponent<EdgeCollider2D>();
@@ -85,5 +87,21 @@ public class LevelGenerator : MonoBehaviour
             windZones[i].SetActive(true);
         }
 
+        UIDisplayCheatScreen.OnCheatSwitchWindZones += CheatSwitchWindZones;
+    }
+
+    private void CheatSwitchWindZones()
+    {
+        switchWinds = !switchWinds;
+
+        for (int i = 0; i < windZones.Length; i++)
+        {
+            windZones[i].SetActive(switchWinds);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        UIDisplayCheatScreen.OnCheatSwitchWindZones -= CheatSwitchWindZones;
     }
 }
