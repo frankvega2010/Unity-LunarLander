@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public GameObject levelBounds;
+    public GameObject windZonePrefab;
+    public GameObject[] windZones;
     public int points;
     public int cameraBoundsLimit;
     public Vector2[] pointsPositions;
@@ -13,7 +15,7 @@ public class LevelGenerator : MonoBehaviour
     public float maxRangeX; //  6.0
     public float minRangeY; //  0.0
     public float maxRangeY; // 16.0
-
+    
     private LineRenderer lineRenderer;
     private EdgeCollider2D edgeCollider;
     private EdgeCollider2D levelBoundsCollider;
@@ -74,5 +76,14 @@ public class LevelGenerator : MonoBehaviour
 
         edgeCollider.points = pointsPositions;
         levelBoundsCollider.points = levelBoundsPositions;
+
+        for (int i = 0; i < windZones.Length; i++)
+        {
+            GameObject windZoneInstance = Instantiate(windZonePrefab);
+            windZones[i] = windZoneInstance;
+            windZones[i].transform.position = new Vector3(Random.Range(levelBoundsPositions[0].x, levelBoundsPositions[1].x) + i * 15, windZones[i].transform.position.y, windZones[i].transform.position.z);
+            windZones[i].SetActive(true);
+        }
+
     }
 }
