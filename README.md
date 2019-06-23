@@ -8,4 +8,16 @@ The game will contain most of the content from its predecessor plus new stuff li
 
 ### Download: Work In Progress.
 
+### Credits:
+
+- Lunar Module Sprite : https://opengameart.org/content/apollo-moon-landing-sprites
+
+- Lunar Module Particle Effects : https://assetstore.unity.com/packages/vfx/particles/fantasy-effect-lite-pack-1-51089
+
+- Silver pixel font: https://poppyworks.itch.io/silver
+
+- Utilities (Progress bar) : https://bitbucket.org/UnityUIExtensions/unity-ui-extensions/src/master/
+
+- Space textures https://opengameart.org/content/parallax-space-scene-seamlessly-scrolls-too
+
 Enjoy!
