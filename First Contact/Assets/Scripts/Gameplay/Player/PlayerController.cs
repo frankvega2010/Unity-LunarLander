@@ -128,6 +128,7 @@ public class PlayerController : MonoBehaviour
         }
 
         CurrentSessionStats.Get().score = score;
+        Highscore.Get().updateHighscore(score);
     }
 
     private void OnDestroy()

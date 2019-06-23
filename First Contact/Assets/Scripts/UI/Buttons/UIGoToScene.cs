@@ -18,6 +18,7 @@ public class UIGoToScene : MonoBehaviour
                 break;
             default:
                 SceneManager.LoadScene(sceneName);
+                Time.timeScale = 1;
                 break;
         }
     }
