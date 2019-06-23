@@ -1493,7 +1493,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 715779401}
-        m_MethodName: pauseGame
+        m_MethodName: PauseGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1647,8 +1647,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747508239}
   m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 74.53, y: 54.31, z: 15.8}
-  m_LocalScale: {x: 8.933521, y: 1, z: 15.907258}
+  m_LocalPosition: {x: 82.86, y: 59.62, z: 15.8}
+  m_LocalScale: {x: 10.005544, y: 1, z: 17.497984}
   m_Children: []
   m_Father: {fileID: 1362377937}
   m_RootOrder: 4
@@ -12526,8 +12526,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537520165}
   m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 73.34, y: 41.12, z: 12.8}
-  m_LocalScale: {x: 10.042946, y: 1, z: 15.957946}
+  m_LocalPosition: {x: 81.54, y: 45.15, z: 12.8}
+  m_LocalScale: {x: 10.846382, y: 1, z: 17.553741}
   m_Children: []
   m_Father: {fileID: 1362377937}
   m_RootOrder: 3
@@ -13138,7 +13138,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1654794658}
-        m_MethodName: continueGame
+        m_MethodName: ContinueGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14029,9 +14029,29 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  points: 65
-  cameraBoundsLimit: 10
+  points: 85
+  cameraBoundsLimit: 15
   pointsPositions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
   - {x: 0, y: 0}
   - {x: 0, y: 0}
   - {x: 0, y: 0}
@@ -14153,8 +14173,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 14.3, y: -7.6}
+  m_SizeDelta: {x: 190.7, y: 133.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1873165936
 MonoBehaviour:
@@ -19421,8 +19441,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097534126}
   m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 74.09, y: 54.66, z: 20.7}
-  m_LocalScale: {x: 9.0178, y: 1, z: 15.907258}
+  m_LocalPosition: {x: 82.43, y: 59.22, z: 20.7}
+  m_LocalScale: {x: 9.91958, y: 1, z: 17.497984}
   m_Children: []
   m_Father: {fileID: 1362377937}
   m_RootOrder: 5
