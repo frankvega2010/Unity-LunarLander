@@ -4,7 +4,7 @@
 ## College Assigment made with Unity
 
 First Contact is a little game inspired by Lunar Lander , we will be using this game as a reference to practice the functionality of Unity 2D.
-The game will contain most of the content from its predecessor plus new stuff like highscores, sounds,music and many more!
+The game will contain most of the content from its predecessor plus new stuff.
 
 ### Trello, watch the progress of the game! : https://trello.com/b/W2XEzztG/first-contact
 
