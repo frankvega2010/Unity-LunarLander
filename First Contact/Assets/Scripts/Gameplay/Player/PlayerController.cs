@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public GameObject particlesGameObject;
     public GameObject timerUI;
     public float crashSpeed;
+    public float crashSpeedX;
     public float fakeMultiplierSpeed;
     public float fuel;
     public int score;
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (playerRigidbody.velocity.y * fakeMultiplierSpeed < -crashSpeed || !isPlayerOnGround)
+            if (playerRigidbody.velocity.y * fakeMultiplierSpeed < -crashSpeed || !isPlayerOnGround || Mathf.Abs(playerRigidbody.velocity.x * fakeMultiplierSpeed) > crashSpeedX)
             {
                 if (onFailedLanding != null)
                 {
