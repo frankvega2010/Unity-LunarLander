@@ -11,10 +11,10 @@ public class LevelGenerator : MonoBehaviour
     public int cameraBoundsLimit;
     public Vector2[] pointsPositions;
     public Vector2[] levelBoundsPositions;
-    public float minRangeX; //  1.5
-    public float maxRangeX; //  6.0
-    public float minRangeY; //  0.0
-    public float maxRangeY; // 16.0
+    public float minRangeX;
+    public float maxRangeX;
+    public float minRangeY;
+    public float maxRangeY;
     
     private LineRenderer lineRenderer;
     private EdgeCollider2D edgeCollider;
@@ -22,9 +22,9 @@ public class LevelGenerator : MonoBehaviour
     private int randomChance;
     private float randomPositionX;
     private bool switchWinds;
-    
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         switchWinds = true;
         lineRenderer = GetComponent<LineRenderer>();

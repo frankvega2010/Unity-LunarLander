@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D playerRig;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         playerRig = GetComponent<Rigidbody2D>();
         playerRig.gravityScale = gravity;
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         float horizontalSpeed = Input.GetAxisRaw("Horizontal");
         float verticalSpeed = Input.GetAxisRaw("Vertical");

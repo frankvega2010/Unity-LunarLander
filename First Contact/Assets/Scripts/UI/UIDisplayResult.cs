@@ -8,7 +8,7 @@ public class UIDisplayResult : MonoBehaviour
     public Text resultText;
     public Text scoreText;
 
-    public void updateText(string newResultText,Color resultTextColor)
+    public void UpdateText(string newResultText,Color resultTextColor)
     {
         resultText.text = newResultText;
         resultText.color = resultTextColor;

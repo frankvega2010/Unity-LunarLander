@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelCollision : MonoBehaviour
 {
     public delegate void OnLevelCollision();
-    static public OnLevelCollision onPlayerTouch;
+    public static OnLevelCollision onPlayerTouch;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

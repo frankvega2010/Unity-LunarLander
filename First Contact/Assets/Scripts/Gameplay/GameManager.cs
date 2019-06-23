@@ -14,17 +14,17 @@ public class GameManager : MonoBehaviour
     private float nextSceneTimer;
     private UIDisplayResult resultText;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         resultText = UIEndRound.GetComponent<UIDisplayResult>();
-        PlayerController.onSuccesfullLanding += onPlayerFinish;
-        PlayerController.onFailedLanding += onPlayerFinish;
+        PlayerController.onSuccesfullLanding += OnPlayerFinish;
+        PlayerController.onFailedLanding += OnPlayerFinish;
         UIDisplayCheatScreen.OnCheatPassLevel += CheatPassLevel;
         endRoundOnce = false;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(isRoundFinished)
         {
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void onPlayerFinish(string action)
+    private void OnPlayerFinish(string action)
     {
         if(!endRoundOnce)
         {
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
                 case "win":
                     Debug.Log("Successfull Landing");
                     UIEndRound.SetActive(true);
-                    resultText.updateText("SUCCESSFULL LANDING!", Color.green);
+                    resultText.UpdateText("SUCCESSFULL LANDING!", Color.green);
                     isPlayerDead = false;
                     isRoundFinished = true;
                     CurrentSessionStats.Get().level++;
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
                 case "loss":
                     Debug.Log("Failed Landing");
                     UIEndRound.SetActive(true);
-                    resultText.updateText("FAILED LANDING", Color.red);
+                    resultText.UpdateText("FAILED LANDING", Color.red);
                     isPlayerDead = true;
                     isRoundFinished = true;
                     CurrentSessionStats.Get().level = 1;
@@ -84,13 +84,13 @@ public class GameManager : MonoBehaviour
 
     private void CheatPassLevel()
     {
-        onPlayerFinish("win");
+        OnPlayerFinish("win");
     }
 
     private void OnDestroy()
     {
-        PlayerController.onSuccesfullLanding -= onPlayerFinish;
-        PlayerController.onFailedLanding -= onPlayerFinish;
+        PlayerController.onSuccesfullLanding -= OnPlayerFinish;
+        PlayerController.onFailedLanding -= OnPlayerFinish;
         UIDisplayCheatScreen.OnCheatPassLevel -= CheatPassLevel;
     }
 }

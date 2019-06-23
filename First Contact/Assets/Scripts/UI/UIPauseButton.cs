@@ -31,12 +31,12 @@ public class UIPauseButton : MonoBehaviour
         {
             if(!isSecondaryPauseButton)
             {
-                pauseGame();
+                PauseGame();
             }
         }
     }
 
-    public void pauseGame()
+    public void PauseGame()
     {
         if(!isSecondaryPauseButton)
         {
@@ -59,11 +59,11 @@ public class UIPauseButton : MonoBehaviour
         }
     }
 
-    public void continueGame()
+    public void ContinueGame()
     {
         if (isSecondaryPauseButton)
         {
-            primaryPauseButton.GetComponent<UIPauseButton>().pauseGame();
+            primaryPauseButton.GetComponent<UIPauseButton>().PauseGame();
         }   
     }
 }

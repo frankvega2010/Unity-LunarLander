@@ -26,7 +26,7 @@ public class UIStatusManager : MonoBehaviour
     private float hSpeed;
     private float vSpeed;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         fuel = UIFuel.GetComponent<UIStatus>();
         score = UIScore.GetComponent<UIStatus>();
@@ -48,7 +48,7 @@ public class UIStatusManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         hSpeed = playerRigidbody.velocity.x * fakeMultiplierSpeed;
         vSpeed = playerRigidbody.velocity.y * fakeMultiplierSpeed;

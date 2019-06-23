@@ -7,12 +7,12 @@ public class Highscore : MonoBehaviourSingleton<Highscore>
     public int highscore;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         highscore = PlayerPrefs.GetInt("highscore", 0);
     }
 
-    public void updateHighscore(int newScore)
+    public void UpdateHighscore(int newScore)
     {
         if(newScore >= highscore)
         {

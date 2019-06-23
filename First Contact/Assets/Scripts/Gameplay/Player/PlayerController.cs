@@ -25,19 +25,19 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRigidbody;
     private bool isPlayerOnGround;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         score = CurrentSessionStats.Get().score;
         UITimer = timerUI.GetComponent<UIDisplayTime>();
         playerMovement = GetComponent<PlayerMovement>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerParticles = particlesGameObject.GetComponent<ParticleSystem>();
-        LevelCollision.onPlayerTouch += checkCollision;
+        LevelCollision.onPlayerTouch += CheckCollision;
         UIDisplayCheatScreen.OnCheatFuel += CheatAddFuel;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up * -1, rayDistance, rayCastLayer);
 
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void checkCollision()
+    private void CheckCollision()
     {
         float localRotZ = (transform.localEulerAngles.z + 360) % 360;
 
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
         }
 
         CurrentSessionStats.Get().score = score;
-        Highscore.Get().updateHighscore(score);
+        Highscore.Get().UpdateHighscore(score);
     }
 
     private void CheatAddFuel()
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        LevelCollision.onPlayerTouch -= checkCollision;
+        LevelCollision.onPlayerTouch -= CheckCollision;
         UIDisplayCheatScreen.OnCheatFuel -= CheatAddFuel;
     }
 }

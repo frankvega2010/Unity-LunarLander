@@ -17,7 +17,7 @@ public class LevelWindZone : MonoBehaviour
     private AreaEffector2D effector;
     private SpriteRenderer sprite;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         effector = GetComponent<AreaEffector2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -32,7 +32,7 @@ public class LevelWindZone : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(waitingTimer < 0)
         {

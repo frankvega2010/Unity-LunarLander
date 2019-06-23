@@ -11,7 +11,6 @@ public class CameraFollow : MonoBehaviour
     public float lerpSizeSpeed;
     public float cameraMinSize;
 
-
     private Vector3 targetPos;
     private Vector3 cameraNewPos;
     private float targetPosX;
@@ -36,7 +35,7 @@ public class CameraFollow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         targetPos = Camera.main.WorldToViewportPoint(target.transform.position);
         targetPosX = targetPos.x;

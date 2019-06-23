@@ -10,13 +10,13 @@ public class UIStatus : MonoBehaviour
 
     private Text statusText;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         statusText = GetComponent<Text>();        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         statusText.text = statusName + "  " + statusValue.ToString("0000");
     }

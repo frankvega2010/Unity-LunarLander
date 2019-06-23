@@ -14,7 +14,7 @@ public class LoaderManager : MonoBehaviourSingleton<LoaderManager>
         StartCoroutine(AsynchronousLoad(sceneName));
     }
 
-    IEnumerator AsynchronousLoad(string scene)
+    private IEnumerator AsynchronousLoad(string scene)
     {
         loadingProgress = 0;
         timeLoading = 0;
