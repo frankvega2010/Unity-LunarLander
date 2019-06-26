@@ -8,7 +8,7 @@ The game will contain most of the content from its predecessor plus new stuff.
 
 ### Trello, watch the progress of the game! : https://trello.com/b/W2XEzztG/first-contact
 
-### Download: https://github.com/frankvega2010/Unity-LunarLander/releases/tag/v1.0
+### Download: https://github.com/frankvega2010/Unity-LunarLander/releases/tag/v1.1
 
 ### Controls:
 
