@@ -12843,6 +12843,7 @@ MonoBehaviour:
   fakeMultiplierSpeed: 40
   fuel: 500
   score: 300
+  arePlatformsOnGround: 0000
   rayCastLayer:
     serializedVersion: 2
     m_Bits: 256

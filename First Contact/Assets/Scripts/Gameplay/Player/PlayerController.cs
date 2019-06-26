@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float fakeMultiplierSpeed;
     public float fuel;
     public int score;
+    public bool[] arePlatformsOnGround;
 
     public LayerMask rayCastLayer;
     public float rayDistance;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement playerMovement;
     private ParticleSystem playerParticles;
     private Rigidbody2D playerRigidbody;
-    private bool isPlayerOnGround;
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -39,27 +40,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up * -1, rayDistance, rayCastLayer);
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position - new Vector3(0.2f,0,0), transform.up * -1, rayDistance, rayCastLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + new Vector3(0.2f, 0, 0), transform.up * -1, rayDistance, rayCastLayer);
 
-        if (hit.collider != null)
-        {
-            Debug.DrawRay(transform.position, transform.up * -1 * rayDistance, Color.white);
-            string layerHitted = LayerMask.LayerToName(hit.collider.gameObject.layer);
-
-            switch (layerHitted)
-            {
-                case "floor":
-                    Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
-                    Debug.DrawRay(transform.position, transform.up * -1 * hit.distance, Color.yellow);
-                    isPlayerOnGround = true;
-                    break;
-            }
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.up * -1 * rayDistance, Color.white);
-        }
-
+        CheckRaycastCollision(hitLeft, 0, transform.position - new Vector3(0.2f, 0, 0));
+        CheckRaycastCollision(hitRight, 1, transform.position + new Vector3(0.2f, 0, 0));
 
         if (playerMovement.isMoving)
         {
@@ -82,6 +67,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void CheckRaycastCollision(RaycastHit2D hit,int index,Vector3 position)
+    {
+        if (hit.collider != null)
+        {
+            Debug.DrawRay(position, transform.up * -1 * rayDistance, Color.white);
+            string layerHitted = LayerMask.LayerToName(hit.collider.gameObject.layer);
+
+            switch (layerHitted)
+            {
+                case "floor":
+                    Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
+                    Debug.DrawRay(transform.position, transform.up * -1 * hit.distance, Color.yellow);
+                    arePlatformsOnGround[index] = true;
+                    break;
+            }
+        }
+        else
+        {
+            Debug.DrawRay(position, transform.up * -1 * rayDistance, Color.white);
+            arePlatformsOnGround[index] = false;
+        }
+    }
+
     private void CheckCollision()
     {
         float localRotZ = (transform.localEulerAngles.z + 360) % 360;
@@ -96,7 +104,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (playerRigidbody.velocity.y * fakeMultiplierSpeed < -crashSpeed || !isPlayerOnGround || Mathf.Abs(playerRigidbody.velocity.x * fakeMultiplierSpeed) > crashSpeedX)
+            if (playerRigidbody.velocity.y * fakeMultiplierSpeed < -crashSpeed || Mathf.Abs(playerRigidbody.velocity.x * fakeMultiplierSpeed) > crashSpeedX)
             {
                 if (onFailedLanding != null)
                 {
@@ -106,12 +114,39 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                isPlayerOnGround = false;
-                if (onSuccesfullLanding != null)
+                bool isFinalCollisionCorrect = false;
+                int platformsOnGround = 0;
+
+                for (int i = 0; i < arePlatformsOnGround.Length; i++)
                 {
-                    GiveScore(true);
-                    onSuccesfullLanding("win");
+                    if (arePlatformsOnGround[i])
+                    {
+                        platformsOnGround++;
+                    }
                 }
+
+                if(platformsOnGround >= arePlatformsOnGround.Length)
+                {
+                    isFinalCollisionCorrect = true;
+                }
+
+                if(isFinalCollisionCorrect)
+                {
+                    if (onSuccesfullLanding != null)
+                    {
+                        GiveScore(true);
+                        onSuccesfullLanding("win");
+                    }
+                }
+                else
+                {
+                    if (onFailedLanding != null)
+                    {
+                        GiveScore(false);
+                        onFailedLanding("loss");
+                    }
+                }
+                
             }
         }
 
