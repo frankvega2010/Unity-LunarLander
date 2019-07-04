@@ -14,10 +14,21 @@ public class Highscore : MonoBehaviourSingleton<Highscore>
 
     public void UpdateHighscore(int newScore)
     {
-        if(newScore >= highscore)
+        GameObject database = GameObject.Find("DatabasePHP");
+        DatabasePHP dbphp = database.GetComponent<DatabasePHP>();
+        dbphp.loadpb();
+        int playerpb = int.Parse(dbphp.scoreText.text);
+
+        if (newScore >= highscore)
         {
             highscore = newScore;
             PlayerPrefs.SetInt("highscore", highscore);
+        }
+
+        if(newScore >= playerpb)
+        {
+            dbphp.score = newScore;
+            dbphp.savepb();
         }
     }
 }

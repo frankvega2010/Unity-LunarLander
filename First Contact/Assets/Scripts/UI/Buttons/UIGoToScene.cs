@@ -16,6 +16,21 @@ public class UIGoToScene : MonoBehaviour
                 LoaderManager.Get().LoadScene(sceneName);
                 UILoadingScreen.Get().SetVisible(true);
                 break;
+            case "Profile":
+                GameObject target = GameObject.Find("DatabasePHP");
+                target.GetComponent<DatabasePHP>().switchToProfile();
+                break;
+            case "Menu":
+                GameObject target3 = GameObject.Find("ProfilePanel");
+                target3.transform.SetParent(null,false);
+
+                DontDestroyOnLoad(target3);
+
+                GameObject target2 = GameObject.Find("DatabasePHP");
+                target2.GetComponent<DatabasePHP>().infoProfileText.text = "";
+
+                SceneManager.LoadScene(sceneName);
+                break;
             default:
                 SceneManager.LoadScene(sceneName);
                 Time.timeScale = 1;

@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Cachuflito Games Inc.
+  companyName: frankvega
   productName: First Contact
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -42,7 +42,7 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 3
-  - logo: {fileID: 21300000, guid: 26b891049bcdc4848ab55b57be9dd407, type: 3}
+  - logo: {fileID: 21300000, guid: 29d6830f6d5e5e24c92fde552c17e7f1, type: 3}
     duration: 3
   - logo: {fileID: 21300000, guid: 475161bd06eb0c64ba20c4a8b320f0f2, type: 3}
     duration: 5
@@ -124,7 +124,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0
+  bundleVersion: 1.2 Beta
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
